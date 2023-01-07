@@ -112,7 +112,7 @@ class HomeController extends Controller
             }catch(\Exception $e) {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Error Sending Email'
+                    'message' => $e->getMessage(),
                 ]);
             }
             
