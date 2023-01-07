@@ -23,5 +23,24 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'email' => 'admin@becomingthesannis23.com.ng',
+            'password' => Hash::make('secret'),
+            'email_verified_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+
+        DB::table('users')->insert([
+            'name' => 'Pelumi Sanni',
+            'email' => 'themayowasanni@gmail.com',
+            'password' => Hash::make('secret'),
+            'email_verified_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }
