@@ -27,10 +27,6 @@ $(document).ready(function(){
             return;
         }
 
-        if($('#phone_no').val() == ''){
-            alert('Phone Number field is required');
-            return;
-        }
 
         $(this).html('Submitting...');
         $(this).attr('disabled', true);
