@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Guest;
 use App\GeneralGuest;
+use App\Imports\GuestList;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\SendGuestInvite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -104,10 +106,13 @@ class HomeController extends Controller
         $guest->counter = 0;
         $guest->no_of_invite = 1;
         $guest->status = 0;
+        $guest->invitation_sent = 0;
         if($guest->save())
         {
             try {
                 Mail::to($request->email)->cc(auth()->user()->email)->send(new SendGuestInvite($guest));
+                $guest->invitation_sent = 1;
+                $guest->update();
             }catch(\Exception $e) {
                 return response()->json([
                     'status' => false,
@@ -169,9 +174,21 @@ class HomeController extends Controller
     public function resendInvite($id)
     {
         $guest = Guest::find($id);
-        Mail::to($guest->email)->cc(auth()->user()->email)->send(new SendGuestInvite($guest));
-        alert()->success('Invite sent successfully')->persistent('Ok');
-        return back();
+        if(!$guest) {
+            alert()->error('Guest not found')->persistent('Ok');
+            return back();
+        }
+        try {
+            Mail::to($guest->email)->cc(auth()->user()->email)->send(new SendGuestInvite($guest));
+            $guest->invitation_sent = 1;
+            $guest->update();
+            alert()->success('Invite sent successfully')->persistent('Ok');
+            return back();
+        }catch(\Exception $e) {
+            alert()->error($e->getMessage())->persistent('Ok');
+            return back();
+        }
+        
     }
 
     public function deleteInvite($id)
@@ -182,5 +199,11 @@ class HomeController extends Controller
             'message' => 'Deleted',
             'status' => true
         ]);
+    }
+
+    public function bulkInvitation(Request $request) {
+        Excel::import(new GuestList, $request->file('bulk_guest'));
+        alert()->success('Invite uploaded successfully')->persistent('Ok');
+        return back();
     }
 }

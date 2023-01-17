@@ -29,3 +29,4 @@ Route::get('guest/validate/{token}', 'HomeController@validateGuest');
 Route::get('guest/resend/{id}', 'HomeController@resendInvite')->name('resendInvite');
 Route::get('guest/delete/{id}', 'HomeController@deleteInvite')->name('deleteInvite');
 Route::get('general-pass/permit', 'HomeController@generalInvite')->name('generalInvite');
+Route::post('guest/bulk-invitation', 'HomeController@bulkInvitation')->name('bulkInvitation');

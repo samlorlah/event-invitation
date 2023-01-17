@@ -18,11 +18,12 @@ class CreateGuestsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('full_name');
             $table->string('email')->unique();
-            $table->string('phone_no')->unique();
+            $table->string('phone_no')->nullable();
             $table->string('token');
             $table->string('qr_code');
             $table->bigInteger('no_of_invite');
             $table->bigInteger('counter');
+            $table->integer('invitation_sent')->default(0);
             $table->string('status');
             $table->timestamps();
 
