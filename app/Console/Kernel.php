@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         'App\Console\Commands\SendEventDayReminderMail',
         'App\Console\Commands\SendReminderMail',
+        'App\Console\Commands\SendInvitationEmail',
     ];
 
     /**
@@ -27,6 +28,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('reminder:pre-event')->dailyAt('13:00');
         $schedule->command('reminder:event-day')->dailyAt('8:00');
+        $schedule->command('send:invitation')->everyMinute();
     }
 
     /**
