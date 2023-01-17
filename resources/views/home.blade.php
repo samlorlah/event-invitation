@@ -112,7 +112,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-8 offset-sm-2">
-                                    <button type="submit" id="btn_submit_guest" class="btn btn-block btn-primary">Upload</button>
+                                    <button type="submit" class="btn btn-block btn-primary">Upload</button>
                                 </div>
                             </div>
                             <input type="hidden" id="base_url" value="{{ url('/') }}">
