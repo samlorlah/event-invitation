@@ -14,7 +14,7 @@ class GuestList implements ToModel, WithHeadingRow
 {
     public function model(array $row)
     {
-        if(Guest::where('email', '=', $row['email'])->orWhere('phone_no', $row['phone_no'])->first()) {
+        if(Guest::where('email', '=', $row['email'])->first()) {
             return;
         }
 

@@ -85,7 +85,7 @@ class HomeController extends Controller
             ], 500);
         }
 
-        if(Guest::where('email', '=', $request->email)->orWhere('phone_no', $request->phone)->first()) {
+        if(Guest::where('email', '=', $request->email)->first()) {
             return response()->json([
                'status' => false,
                'message' => 'Guest already exists'
