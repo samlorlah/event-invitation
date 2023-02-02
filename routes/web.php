@@ -19,6 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('photo-dump', function () {
+    return view('photodump');
+});
+
+Route::post('upload-photo-dump', 'HomeController@uploadPhotoDump')->name('uploadPhotoDump');
+
 Auth::routes([
 	'register'=> false
 ]);
@@ -30,3 +36,4 @@ Route::get('guest/resend/{id}', 'HomeController@resendInvite')->name('resendInvi
 Route::get('guest/delete/{id}', 'HomeController@deleteInvite')->name('deleteInvite');
 Route::get('general-pass/permit', 'HomeController@generalInvite')->name('generalInvite');
 Route::post('guest/bulk-invitation', 'HomeController@bulkInvitation')->name('bulkInvitation');
+Route::get('photo-dump/view', 'HomeController@viewUploadedPhotos')->name('viewUploadedPhotos');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Guest;
+use App\PhotoDump;
 use App\GeneralGuest;
 use App\Imports\GuestList;
 use Illuminate\Support\Str;
@@ -25,7 +26,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('validateGuest');
+        $this->middleware('auth')->except(['validateGuest', 'uploadPhotoDump']);
     }
 
     /**
@@ -131,11 +132,10 @@ class HomeController extends Controller
     public function validateGuest($token)
     {
         $auth = Auth::user();
+        $guest = Guest::where('token', $token)->first();
         if(!$auth) {
             return redirect('https://becomingthesannis23.com.ng');
         }
-
-        $guest = Guest::where('token', $token)->first();
 
         if(!$guest) {
             alert()->error('Invalid QR Code.', 'Invalid')->persistent('Ok');
@@ -205,5 +205,51 @@ class HomeController extends Controller
         Excel::import(new GuestList, $request->file('bulk_guest'));
         alert()->success('Invite uploaded successfully')->persistent('Ok');
         return back();
+    }
+    
+    public function uploadPhotoDump(Request $request)
+    {
+        if($request->hasFile('file'))
+        {
+            $file = $request->file('file');
+            $file_type = substr($file->getMimeType(), 0, 5);
+
+            if($file_type == 'image' || $file_type == 'video')
+            {
+                try {
+                    $uploadedFileUrl = cloudinary()->uploadFile($file->getRealPath())->getSecurePath();
+                    $img = new PhotoDump;
+                    $img->url = $uploadedFileUrl;
+                    $img->file_type = $file_type;
+                    $img->save();
+    
+                    return response()->json([
+                        'status' => '00',
+                        'message' => 'Uploaded',
+                    ]);
+                }catch(\Exception $e) {
+                    return response()->json([
+                        'status' => '04',
+                        'message' => $e->getMessage(),
+                    ], 400);
+                }
+            } else {
+                return response()->json([
+                    'status' => '04',
+                    'message' => 'Invalid file format',
+                ], 400);
+            }
+        } else {
+            return response()->json([
+                'status' => '04',
+                'message' => 'Please upload a file',
+            ], 400);
+        }
+    }
+
+    public function viewUploadedPhotos()
+    {
+        $media = PhotoDump::paginate(25);
+        return view('viewphoto', compact('media'));
     }
 }

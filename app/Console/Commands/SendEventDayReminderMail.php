@@ -30,14 +30,18 @@ class SendEventDayReminderMail extends Command
      */
     public function handle()
     {
-        $reminder_date = date('Y-m-d', strtotime('2023-02-04'));
-        $today = date('Y-m-d');
+        // $reminder_date = date('Y-m-d', strtotime('2023-02-04'));
+        // $today = date('Y-m-d');
 
-        if($today == $reminder_date) {
-            $guests = Guest::all();
+        // if($today == $reminder_date) {
+            $guests = Guest::where('dday_reminder_sent', 0)->get();
             foreach($guests as $guest) {
-                Mail::to($guest->email)->send(new SendEventDayReminder($guest));
+                if($guest->dday_reminder_sent == 0) {
+                    Mail::to($guest->email)->send(new SendEventDayReminder($guest));
+                    $guest->dday_reminder_sent = 1;
+                    $guest->update();
+                }
             }
-        }
+        // }
     }
 }

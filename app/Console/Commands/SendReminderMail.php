@@ -36,7 +36,11 @@ class SendReminderMail extends Command
         if($today == $reminder_date) {
             $guests = Guest::all();
             foreach($guests as $guest) {
-                Mail::to($guest->email)->send(new SendPreEventReminder($guest));
+                if($guest->reminder_sent == 0) {
+                    Mail::to($guest->email)->send(new SendPreEventReminder($guest));
+                    $guest->reminder_sent = 1;
+                    $guest->update();
+                }
             }
         }
     }
