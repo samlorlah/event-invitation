@@ -82,12 +82,12 @@
                                 <div id="navbar" class="collapse navbar-collapse navigation-holder">
                                     <button class="menu-close"><i class="ti-close"></i></button>
                                     <ul class="nav navbar-nav mb-2 mb-lg-0">
-                                        <li><a href="https://becomingthesannis23.com.ng/index.html">Home</a>
+                                        <li><a href="https://becomingthesannis23.com.ng">Home</a>
                                         </li>
-                                        <li><a href="https://becomingthesannis23.com.ng/index.html#story">Story</a></li>
-                                        <li><a href="https://becomingthesannis23.com.ng/index.html#gallery">Gallery</a></li>
-                                        <li><a href="https://becomingthesannis23.com.ng/index.html#event">Event</a></li>
-                                        <li><a href="https://becomingthesannis23.com.ng/index.html#rsvp">RSVP and Gift</a></li>
+                                        <li><a href="https://becomingthesannis23.com.ng#story">Story</a></li>
+                                        <li><a href="https://becomingthesannis23.com.ng#gallery">Gallery</a></li>
+                                        <li><a href="https://becomingthesannis23.com.ng#event">Event</a></li>
+                                        <li><a href="https://becomingthesannis23.com.ng#rsvp">RSVP and Gift</a></li>
                                         <li><a class="active" href="#">Photo Dump</a></li>
                                         <li><a target="_blank" href="https://admin.becomingthesannis23.com.ng">Admin</a></li>
                                     </ul>
