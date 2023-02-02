@@ -111,7 +111,7 @@
                     <form class="dropzone dropzone-primary" id="multiFileUpload" action="{{ route('uploadPhotoDump') }}">
                         @csrf
                       <div class="dz-message needsclick"><i class="icon-cloud-up"></i>
-                        <h6>Drop files here or click to upload.</h6><span class="note needsclick">Kindly drop all the pictures and short taken at our wedding here. <b>Max. 2MB per file</b></span>
+                        <h6>Drop files here or click to upload.</h6><span class="note needsclick">Kindly drop all the pictures and short taken at our wedding here.</span>
                       </div>
                     </form>
                   </div>
