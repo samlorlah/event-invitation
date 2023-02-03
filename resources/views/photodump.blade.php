@@ -88,8 +88,9 @@
                                         <li><a href="https://becomingthesannis23.com.ng#gallery">Gallery</a></li>
                                         <li><a href="https://becomingthesannis23.com.ng#event">Event</a></li>
                                         <li><a href="https://becomingthesannis23.com.ng#rsvp">RSVP and Gift</a></li>
+                                        <li><a href="https://admin.becomingthesannis23.com.ng/Wedding-programme.pdf" target="_blank">Programme</a></li>
                                         <li><a class="active" href="#">Photo Dump</a></li>
-                                        <li><a target="_blank" href="https://admin.becomingthesannis23.com.ng">Admin</a></li>
+                                        {{-- <li><a target="_blank" href="https://admin.becomingthesannis23.com.ng">Admin</a></li> --}}
                                     </ul>
 
                                 </div><!-- end of nav-collapse -->
