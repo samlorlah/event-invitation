@@ -66,7 +66,7 @@
           <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
             <td align="right" class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
               {{-- <img height="30" width="105" src="data:image/png;base64,{{base64_encode(file_get_contents(public_path('img/logo.png')))}}" alt="Wedding Logo"> --}}
-              <img height="73" width="50" src="{{ $message->embed(public_path('img/logo.png')) }}" alt="Wedding Logo">
+              <img height="146" width="100" src="{{ $message->embed(public_path('img/logo.png')) }}" alt="Wedding Logo">
             </td>
           </tr>
           <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
