@@ -86,13 +86,6 @@ class HomeController extends Controller
             ], 500);
         }
 
-        if(Guest::where('email', '=', $request->email)->first()) {
-            return response()->json([
-               'status' => false,
-               'message' => 'Guest already exists'
-            ]);
-        }
-
         $token = Str::random(60);
         $filename = time() . rand(111111, 999999).'.png';
 
