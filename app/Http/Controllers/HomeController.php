@@ -68,7 +68,7 @@ class HomeController extends Controller
         // }
 
         $validate = Validator::make($request->all(), [
-            'email' => 'required|unique:guests|email',
+            'email' => 'required|email',
             'name' => 'required',
         ]);
 
