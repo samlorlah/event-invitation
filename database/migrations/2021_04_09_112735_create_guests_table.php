@@ -17,7 +17,7 @@ class CreateGuestsTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->string('full_name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone_no')->nullable();
             $table->string('token');
             $table->string('qr_code');
