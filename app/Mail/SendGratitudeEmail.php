@@ -32,7 +32,7 @@ class SendGratitudeEmail extends Mailable
     public function build()
     {
         return $this->view('emails.gratitude')
-        ->subject('GRATITUDE FOR GRANTING YOUR PRESENCE AT BECOMINGTHESANNIS23')
-        ->from('becomingthesannis23@gmail.com', config('app.name'));
+        ->subject('GRATITUDE FOR GRANTING YOUR PRESENCE AT ' . strtoupper(env('APP_NAME))
+        ->from(env('MAIL_FROM_ADDRESS'), config('app.name'));
     }
 }
