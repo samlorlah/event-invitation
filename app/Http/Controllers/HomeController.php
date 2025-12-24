@@ -127,7 +127,7 @@ class HomeController extends Controller
         $auth = Auth::user();
         $guest = Guest::where('token', $token)->first();
         if(!$auth) {
-            return redirect('https://becomingthesannis23.com.ng');
+            return redirect('https://saaspherehq.com');
         }
 
         if(!$guest) {
@@ -154,7 +154,7 @@ class HomeController extends Controller
     {
         $auth = Auth::user();
         if(!$auth) {
-            return redirect('https://becomingthesannis23.com.ng');
+            return redirect('https://saaspherehq.com');
         }
 
         $generalGuest = new GeneralGuest;
