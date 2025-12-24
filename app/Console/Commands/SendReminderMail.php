@@ -30,7 +30,7 @@ class SendReminderMail extends Command
      */
     public function handle()
     {
-        $reminder_date = date('Y-m-d', strtotime('2023-01-28'));
+        $reminder_date = date('Y-m-d', env('EVENT_DATE'));
         $today = date('Y-m-d');
 
         if($today == $reminder_date) {
