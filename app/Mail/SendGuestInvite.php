@@ -29,7 +29,7 @@ class SendGuestInvite extends Mailable
     public function build()
     {
         return $this->view('emails.invite')
-        ->subject(config('app.name').' - WEDDING INVITE FOR '.strtoupper($this->guest->full_name))
+        ->subject(config('app.name').' - INVITE FOR '.strtoupper($this->guest->full_name))
         ->with(['message' => $this])
         ->from('becomingthesannis23@gmail.com', config('app.name'));
     }
