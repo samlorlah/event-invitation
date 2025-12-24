@@ -29,7 +29,7 @@ class SendPreEventReminder extends Mailable
     public function build()
     {
         return $this->view('emails.reminder')
-        ->subject('REMINDER - '. config('app.name'). ' - WEDDING INVITE FOR '.strtoupper($this->guest->full_name))
-        ->from('becomingthesannis23@gmail.com', config('app.name'));
+        ->subject('REMINDER - '. config('app.name'). ' - INVITE FOR '.strtoupper($this->guest->full_name))
+        ->from(env('MAIL_FROM_ADDRESS'), config('app.name'));
     }
 }
