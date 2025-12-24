@@ -31,6 +31,6 @@ class SendGuestInvite extends Mailable
         return $this->view('emails.invite')
         ->subject(config('app.name').' - INVITE FOR '.strtoupper($this->guest->full_name))
         ->with(['message' => $this])
-        ->from('becomingthesannis23@gmail.com', config('app.name'));
+        ->from(env('MAIL_FROM_ADDRESS'), config('app.name'));
     }
 }
