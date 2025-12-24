@@ -30,6 +30,6 @@ class SendEventDayReminder extends Mailable
     {
         return $this->view('emails.on_day_reminder')
         ->subject('REMINDER - '. config('app.name'). ' - INVITE FOR '.strtoupper($this->guest->full_name))
-        ->from('becomingthesannis23@gmail.com', config('app.name'));
+        ->from(env('MAIL_FROM_ADDRESS'), config('app.name'));
     }
 }
