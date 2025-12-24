@@ -4,7 +4,7 @@
 <div class="container">
     <div id="invite_button">
         <button type="button" id="btn_add_guest" class="btn btn-primary">Invite New Guest</button>
-        {/* <a href="{{ route('viewUploadedPhotos') }}" class="btn btn-danger">View Uploaded Pictures</a> */}
+        {-- <a href="{{ route('viewUploadedPhotos') }}" class="btn btn-danger">View Uploaded Pictures</a> --}
         <button type="button" id="btn_back_to_guest" class="btn btn-primary d-none my-4">Back</button>
     </div>
     <div id="guest_table" class="mt-5">
